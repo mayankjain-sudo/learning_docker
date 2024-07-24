@@ -1,0 +1,17 @@
+# docker build .
+# docker build -t tagname .
+# docker run -d -p 8080:8080 --name myapp myapp
+# docker exec -it myapp bash
+# docker stop myapp
+# docker rm myapp
+# docker rmi myapp
+# docker images
+# docker ps -a
+# docker logs -f myapp
+# docker create volume volume_name
+# docker volume inspect volume_name #to get details about volumes
+# docker volume ls
+# docker -v <argument>
+# docker --mount source=volume_name,target=/app, imagename
+# docker volume rm volume_name
+# docker inspect container_name
