@@ -1,0 +1,32 @@
+# docket network ls
+Let's run a nginx container
+# docker run -d --name login nginx:latest
+
+Now login to container and install ping 
+# docker exec -it login /bin/bash
+# apt-get update
+# apt-get install iputils-ping -y
+
+Now lets run another container 
+# docker run -d --name logout nginx:latest
+check both container are running 
+docker ps
+
+Now check IP of login and logout container by running 
+docker inspect login 172.17.0.2
+docker inspect logout 172.17.0.3
+
+Now we will create a new network 
+docker network create <network-name>
+once network create check by running the command 
+docker network ls
+
+Now create a container in new network which is isolated from the other 2 containers
+docker run -d --name finance --network secure-network nginx:latest
+if you inspect the above container you will find the IP address is completely different from login and logout containe and you cannot ping the conatiner.
+this means you finance conatiner is isolated from other 2 containers.
+
+To create a container with host network run below command 
+docker run -d --name host-dome --network host nginx:latest
+
+if you inspect above container there will be no IP since it is connected with host network
